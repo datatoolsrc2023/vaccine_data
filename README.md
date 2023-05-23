@@ -2,7 +2,7 @@
 Exploration of MMR and Covid data in the U.S.
 
 ## Prerequisits
-- Python 3.9.6: to maintain Mac M1/M2 compatability with DBT [(suggested reading)](https://interworks.com/blog/2022/10/12/installing-dbt-with-mac-m1-chips/)
+- Python 3.9.7: to maintain Mac M1/M2 compatability with DBT [(suggested reading)](https://interworks.com/blog/2022/10/12/installing-dbt-with-mac-m1-chips/)
 - Docker x.x
 
 ## Data Sources
