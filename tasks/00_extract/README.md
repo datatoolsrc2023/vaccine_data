@@ -1,2 +1,0 @@
-## data diff
-In prior years, health insurance variables INS_STAT2_I and INS_BREAK_I were available only for children with adequate provider data in the non-territory United States. Beginning in 2021, these variables are now available for all children with adequate provider data, including children in Puerto Rico.
