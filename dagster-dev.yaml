@@ -12,7 +12,7 @@ storage:
         env: DAGSTER_PG_DB
       port: 5432
 
-# update for gpc
+# update for gcp
 compute_logs:
   module: dagster_aws.s3.compute_log_manager
   class: S3ComputeLogManager
