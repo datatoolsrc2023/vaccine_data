@@ -21,7 +21,7 @@ def cities() -> tuple:
     group_name='FIPS',
 )
 def files() -> list:
-    path = 'data/NIH_child/NIH_raw' # update from hardcode
+    path = 'data/NIH_child/NIH_raw' # update from handcoded
     files = os.listdir(path)
     files = [file for file in files if file.endswith('.DAT')]
     return files
@@ -81,7 +81,7 @@ def fipsFiles(urls:dict) -> list:
 def fipsLocation(years:list, cities:tuple) -> dict:
     fips = defaultdict(list)
     for year in years:
-        file = f'data/Census/Census_raw/{year}_FIPS_place.csv'
+        file = f'data/Census/Census_raw/{year}_FIPS_place.csv' # update from handcoded
         for city in cities:
             fips[year].append(str(pl.read_csv(file)
                         .select(name=pl.col('^Area Name.*$')
