@@ -1,0 +1,11 @@
+[32m2023-06-02 12:27:22 -0400[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 18f1dff5-b9a5-49b8-9d92-1e1cf8dcbe46 - 60917 - LOGS_CAPTURED - Started capturing logs in process (pid: 60917).
+[32m2023-06-02 12:27:22 -0400[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 18f1dff5-b9a5-49b8-9d92-1e1cf8dcbe46 - 60917 - urls - STEP_START - Started execution of step "urls".
+[32m2023-06-02 12:27:23 -0400[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 18f1dff5-b9a5-49b8-9d92-1e1cf8dcbe46 - urls - Loading file from: /Users/blakevanfleteren/Programs/GitHub/vaccine_data/vaccines/tmpbd1xor13/storage/years
+[32m2023-06-02 12:27:23 -0400[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 18f1dff5-b9a5-49b8-9d92-1e1cf8dcbe46 - 60917 - urls - ASSET_OBSERVATION - ASSET_OBSERVATION for step urls
+[32m2023-06-02 12:27:23 -0400[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 18f1dff5-b9a5-49b8-9d92-1e1cf8dcbe46 - 60917 - urls - LOADED_INPUT - Loaded input "years" using input manager "io_manager", from output "result" of step "years"
+[32m2023-06-02 12:27:23 -0400[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 18f1dff5-b9a5-49b8-9d92-1e1cf8dcbe46 - 60917 - urls - STEP_INPUT - Got input "years" of type "[Any]". (Type check passed).
+[32m2023-06-02 12:27:23 -0400[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 18f1dff5-b9a5-49b8-9d92-1e1cf8dcbe46 - 60917 - urls - STEP_OUTPUT - Yielded output "result" of type "dict". (Type check passed).
+[32m2023-06-02 12:27:23 -0400[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 18f1dff5-b9a5-49b8-9d92-1e1cf8dcbe46 - urls - Writing file at: /Users/blakevanfleteren/Programs/GitHub/vaccine_data/vaccines/tmpbd1xor13/storage/urls
+[32m2023-06-02 12:27:23 -0400[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 18f1dff5-b9a5-49b8-9d92-1e1cf8dcbe46 - 60917 - urls - ASSET_MATERIALIZATION - Materialized value urls.
+[32m2023-06-02 12:27:23 -0400[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 18f1dff5-b9a5-49b8-9d92-1e1cf8dcbe46 - 60917 - urls - HANDLED_OUTPUT - Handled output "result" using IO manager "io_manager"
+[32m2023-06-02 12:27:23 -0400[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 18f1dff5-b9a5-49b8-9d92-1e1cf8dcbe46 - 60917 - urls - STEP_SUCCESS - Finished execution of step "urls" in 29ms.

@@ -1,0 +1,12 @@
+[32m2023-06-02 14:08:28 -0400[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - c2cb6fd8-11ad-460b-8fac-cc5c813462ff - 65788 - LOGS_CAPTURED - Started capturing logs in process (pid: 65788).
+[32m2023-06-02 14:08:28 -0400[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - c2cb6fd8-11ad-460b-8fac-cc5c813462ff - 65788 - acsVars - STEP_START - Started execution of step "acsVars".
+[32m2023-06-02 14:08:28 -0400[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - c2cb6fd8-11ad-460b-8fac-cc5c813462ff - acsVars - Loading file from: /Users/blakevanfleteren/Programs/GitHub/vaccine_data/vaccines/tmpbd1xor13/storage/years
+[32m2023-06-02 14:08:28 -0400[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - c2cb6fd8-11ad-460b-8fac-cc5c813462ff - 65788 - acsVars - ASSET_OBSERVATION - ASSET_OBSERVATION for step acsVars
+[32m2023-06-02 14:08:28 -0400[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - c2cb6fd8-11ad-460b-8fac-cc5c813462ff - 65788 - acsVars - LOADED_INPUT - Loaded input "years" using input manager "io_manager"
+[32m2023-06-02 14:08:28 -0400[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - c2cb6fd8-11ad-460b-8fac-cc5c813462ff - 65788 - acsVars - STEP_INPUT - Got input "years" of type "[Any]". (Type check passed).
+[32m2023-06-02 14:08:30 -0400[0m - dagster - [34mERROR[0m - [31m__ASSET_JOB - c2cb6fd8-11ad-460b-8fac-cc5c813462ff - acsVars - Error with 2020: 404[0m
+[32m2023-06-02 14:08:30 -0400[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - c2cb6fd8-11ad-460b-8fac-cc5c813462ff - 65788 - acsVars - STEP_OUTPUT - Yielded output "result" of type "dict". (Type check passed).
+[32m2023-06-02 14:08:30 -0400[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - c2cb6fd8-11ad-460b-8fac-cc5c813462ff - acsVars - Writing file at: /Users/blakevanfleteren/Programs/GitHub/vaccine_data/vaccines/tmpbd1xor13/storage/acsVars
+[32m2023-06-02 14:08:31 -0400[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - c2cb6fd8-11ad-460b-8fac-cc5c813462ff - 65788 - acsVars - ASSET_MATERIALIZATION - Materialized value acsVars.
+[32m2023-06-02 14:08:31 -0400[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - c2cb6fd8-11ad-460b-8fac-cc5c813462ff - 65788 - acsVars - HANDLED_OUTPUT - Handled output "result" using IO manager "io_manager"
+[32m2023-06-02 14:08:31 -0400[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - c2cb6fd8-11ad-460b-8fac-cc5c813462ff - 65788 - acsVars - STEP_SUCCESS - Finished execution of step "acsVars" in 2.18s.

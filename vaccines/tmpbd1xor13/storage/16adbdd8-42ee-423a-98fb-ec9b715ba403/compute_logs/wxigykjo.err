@@ -1,0 +1,15 @@
+[32m2023-06-02 13:35:24 -0400[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 16adbdd8-42ee-423a-98fb-ec9b715ba403 - 64000 - LOGS_CAPTURED - Started capturing logs in process (pid: 64000).
+[32m2023-06-02 13:35:24 -0400[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 16adbdd8-42ee-423a-98fb-ec9b715ba403 - 64000 - acsURLs - STEP_START - Started execution of step "acsURLs".
+[32m2023-06-02 13:35:24 -0400[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 16adbdd8-42ee-423a-98fb-ec9b715ba403 - acsURLs - Loading file from: /Users/blakevanfleteren/Programs/GitHub/vaccine_data/vaccines/tmpbd1xor13/storage/fipsLocation
+[32m2023-06-02 13:35:24 -0400[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 16adbdd8-42ee-423a-98fb-ec9b715ba403 - 64000 - acsURLs - ASSET_OBSERVATION - ASSET_OBSERVATION for step acsURLs
+[32m2023-06-02 13:35:24 -0400[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 16adbdd8-42ee-423a-98fb-ec9b715ba403 - 64000 - acsURLs - LOADED_INPUT - Loaded input "fipsLocation" using input manager "io_manager"
+[32m2023-06-02 13:35:24 -0400[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 16adbdd8-42ee-423a-98fb-ec9b715ba403 - acsURLs - Loading file from: /Users/blakevanfleteren/Programs/GitHub/vaccine_data/vaccines/tmpbd1xor13/storage/years
+[32m2023-06-02 13:35:24 -0400[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 16adbdd8-42ee-423a-98fb-ec9b715ba403 - 64000 - acsURLs - ASSET_OBSERVATION - ASSET_OBSERVATION for step acsURLs
+[32m2023-06-02 13:35:24 -0400[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 16adbdd8-42ee-423a-98fb-ec9b715ba403 - 64000 - acsURLs - LOADED_INPUT - Loaded input "years" using input manager "io_manager"
+[32m2023-06-02 13:35:24 -0400[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 16adbdd8-42ee-423a-98fb-ec9b715ba403 - 64000 - acsURLs - STEP_INPUT - Got input "fipsLocation" of type "dict". (Type check passed).
+[32m2023-06-02 13:35:24 -0400[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 16adbdd8-42ee-423a-98fb-ec9b715ba403 - 64000 - acsURLs - STEP_INPUT - Got input "years" of type "[Any]". (Type check passed).
+[32m2023-06-02 13:35:24 -0400[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 16adbdd8-42ee-423a-98fb-ec9b715ba403 - 64000 - acsURLs - STEP_OUTPUT - Yielded output "result" of type "dict". (Type check passed).
+[32m2023-06-02 13:35:24 -0400[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 16adbdd8-42ee-423a-98fb-ec9b715ba403 - acsURLs - Writing file at: /Users/blakevanfleteren/Programs/GitHub/vaccine_data/vaccines/tmpbd1xor13/storage/acsURLs
+[32m2023-06-02 13:35:24 -0400[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 16adbdd8-42ee-423a-98fb-ec9b715ba403 - 64000 - acsURLs - ASSET_MATERIALIZATION - Materialized value acsURLs.
+[32m2023-06-02 13:35:24 -0400[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 16adbdd8-42ee-423a-98fb-ec9b715ba403 - 64000 - acsURLs - HANDLED_OUTPUT - Handled output "result" using IO manager "io_manager"
+[32m2023-06-02 13:35:24 -0400[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 16adbdd8-42ee-423a-98fb-ec9b715ba403 - 64000 - acsURLs - STEP_SUCCESS - Finished execution of step "acsURLs" in 28ms.

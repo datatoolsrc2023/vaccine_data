@@ -1,0 +1,7 @@
+[32m2023-06-02 12:27:21 -0400[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 18f1dff5-b9a5-49b8-9d92-1e1cf8dcbe46 - 60896 - LOGS_CAPTURED - Started capturing logs in process (pid: 60896).
+[32m2023-06-02 12:27:21 -0400[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 18f1dff5-b9a5-49b8-9d92-1e1cf8dcbe46 - 60896 - files - STEP_START - Started execution of step "files".
+[32m2023-06-02 12:27:21 -0400[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 18f1dff5-b9a5-49b8-9d92-1e1cf8dcbe46 - 60896 - files - STEP_OUTPUT - Yielded output "result" of type "[Any]". (Type check passed).
+[32m2023-06-02 12:27:21 -0400[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 18f1dff5-b9a5-49b8-9d92-1e1cf8dcbe46 - files - Writing file at: /Users/blakevanfleteren/Programs/GitHub/vaccine_data/vaccines/tmpbd1xor13/storage/files
+[32m2023-06-02 12:27:21 -0400[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 18f1dff5-b9a5-49b8-9d92-1e1cf8dcbe46 - 60896 - files - ASSET_MATERIALIZATION - Materialized value files.
+[32m2023-06-02 12:27:21 -0400[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 18f1dff5-b9a5-49b8-9d92-1e1cf8dcbe46 - 60896 - files - HANDLED_OUTPUT - Handled output "result" using IO manager "io_manager"
+[32m2023-06-02 12:27:21 -0400[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 18f1dff5-b9a5-49b8-9d92-1e1cf8dcbe46 - 60896 - files - STEP_SUCCESS - Finished execution of step "files" in 47ms.
