@@ -1,7 +1,0 @@
-[32m2023-06-02 12:27:21 -0400[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 18f1dff5-b9a5-49b8-9d92-1e1cf8dcbe46 - 60895 - LOGS_CAPTURED - Started capturing logs in process (pid: 60895).
-[32m2023-06-02 12:27:21 -0400[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 18f1dff5-b9a5-49b8-9d92-1e1cf8dcbe46 - 60895 - cities - STEP_START - Started execution of step "cities".
-[32m2023-06-02 12:27:21 -0400[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 18f1dff5-b9a5-49b8-9d92-1e1cf8dcbe46 - 60895 - cities - STEP_OUTPUT - Yielded output "result" of type "tuple". (Type check passed).
-[32m2023-06-02 12:27:21 -0400[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 18f1dff5-b9a5-49b8-9d92-1e1cf8dcbe46 - cities - Writing file at: /Users/blakevanfleteren/Programs/GitHub/vaccine_data/vaccines/tmpbd1xor13/storage/cities
-[32m2023-06-02 12:27:21 -0400[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 18f1dff5-b9a5-49b8-9d92-1e1cf8dcbe46 - 60895 - cities - ASSET_MATERIALIZATION - Materialized value cities.
-[32m2023-06-02 12:27:21 -0400[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 18f1dff5-b9a5-49b8-9d92-1e1cf8dcbe46 - 60895 - cities - HANDLED_OUTPUT - Handled output "result" using IO manager "io_manager"
-[32m2023-06-02 12:27:21 -0400[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 18f1dff5-b9a5-49b8-9d92-1e1cf8dcbe46 - 60895 - cities - STEP_SUCCESS - Finished execution of step "cities" in 42ms.
