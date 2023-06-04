@@ -29,10 +29,16 @@ def files() -> list:
 @asset(
     group_name='utils'
 )
-def years(files:list) -> list:
+def years(files:list) -> Output[list]:
     years = [file.split('.')[0] for file in files]
     years = [f'20{year[6:8]}' for year in years]
-    return years
+    years.remove('2020')
+    return Output(
+        value=years,
+        metadata={
+            'years': years
+        }
+    )
 
 # pull FIPS data from census for each year
 @asset(
@@ -78,7 +84,7 @@ def fipsFiles(urls:dict) -> list:
 @asset(
     group_name='FIPS',
 )
-def fipsLocation(years:list, cities:tuple) -> dict:
+def fipsLocation(years:list, cities:tuple) -> Output[dict]:
     fips = defaultdict(list)
     for year in years:
         file = f'data/Census/Census_raw/{year}_FIPS_place.csv' # update from handcoded
@@ -87,40 +93,59 @@ def fipsLocation(years:list, cities:tuple) -> dict:
                         .select(name=pl.col('^Area Name.*$')
                         .where(pl.col('^Area Name.*$') == city)
                         .limit(1)).to_series()[0]))
-    return fips
+    return Output(
+        value=fips,
+        metadata={
+            year: fips[year] for year in years
+        }
+    )
 
 # pull American Community Survey variables for each year
 @asset(
     group_name='ACS',
 )
-def acsVars(years:list) -> dict:
-    variables = {}
+def acsGroups(years:list) -> Output[dict]:
+    group_vars = {}
     for year in years:
         url = f'https://api.census.gov/data/{year}/acs/acs1/subject/variables.json'
         print(url)
         response = requests.get(url)
         if response.status_code == 200:
-            variables[year] = response.json()['variables']
+            variables = response.json()['variables']
+            groups = set()
+            for key in list(variables.keys()):
+                if variables[key]['group'] != 'N/A' and len(variables[key]['group']) <10:
+                    groups.add(variables[key]['group'])
+            group_vars[year] = list(groups)
         else:
             logger.error(f'Error with {year}: {response.status_code}')
-    return variables
+    return Output(
+        value=group_vars,
+        metadata={
+            year: group_vars[year] for year in years
+        })
 
 
 # pull American Community Survey data for each year
 @asset(
     group_name='ACS',
 )
-def acsURLs(years:list, fipsLocation:dict, acsVars:dict) -> dict:
+def acsURLs(years:list, fipsLocation:dict, acsGroups:dict) -> Output[dict]:
     urls = defaultdict(list)
-    for year in acsVars.keys():
+    for year in acsGroups.keys():
         cities = fipsLocation[year]
         for city in cities:
             key = 'cc1e68d7a1e08032441b961b0264d57bcfab83bb'
-            vars = ','.join(var for var in acsVars[year].keys())
-            url = f'https://api.census.gov/data/{year}/acs/acs1/cprofile?get={vars}&for=place:{city}&key={key}'
+            groups = ','.join(f'group({group})' for group in acsGroups[year])
+            url = f'https://api.census.gov/data/{year}/acs/acs1/cprofile?get={groups}&for=place:{city}&key={key}'
             url = url.replace(' ', '%20')
             urls[year].append(url)
-    return urls
+    return Output(
+        value=urls,
+        metadata={
+            year: urls[year] for year in years
+        }
+    )
 
 # pull American Community Survey data for each year
 @asset(
@@ -131,5 +156,8 @@ def acsData(acsURLs:dict) -> dict:
     for year, urls in acsURLs.items():
         for url in urls:
             response = requests.get(url)
-            data[year].append(response.json())
+            if response.status_code == 200:
+                data[year].append(response.json())
+            else:
+                logger.error(f'Error with {url}: {response.status_code}')
     return data
