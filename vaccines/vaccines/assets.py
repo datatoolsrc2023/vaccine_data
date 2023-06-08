@@ -4,39 +4,15 @@ import os
 import requests
 from dagster import asset, Output, get_dagster_logger
 from collections import defaultdict
+from resources import cities, files, years
 
 logger = get_dagster_logger()
 
-@asset(
-    group_name='utils'
-)
-def cities() -> tuple:
-    cities = (
-        'Chicago city',
-        'New York city')
-    return cities
-
-# determine years to pull data for
-@asset(
-    group_name='FIPS',
-)
-def files() -> list:
-    path = 'data/NIH_child/NIH_raw' # update from handcoded
-    files = os.listdir(path)
-    files = [file for file in files if file.endswith('.DAT')]
-    return files
-
-@asset(
-    group_name='utils'
-)
-def years(files:list) -> list:
-    years = [file.split('.')[0] for file in files]
-    years = [f'20{year[6:8]}' for year in years]
-    return years
 
 # pull FIPS data from census for each year
 @asset(
     group_name='FIPS',
+    io_manager_key='bigquery_io_manager',
 )
 def urls(years:list) -> Output[dict]:
     urls = defaultdict(dict)
@@ -54,6 +30,7 @@ def urls(years:list) -> Output[dict]:
 # pull FIPS Codes in excel format for each year
 @asset(
     group_name='FIPS',
+    io_manager_key='bigquery_io_manager',
 )
 def fipsFiles(urls:dict) -> list:
     for year, url in urls.items():
@@ -77,6 +54,7 @@ def fipsFiles(urls:dict) -> list:
 # identify FIPS for Chicago, IL and New York, NY
 @asset(
     group_name='FIPS',
+    io_manager_key='bigquery_io_manager',
 )
 def fipsLocation(years:list, cities:tuple) -> dict:
     fips = defaultdict(list)
@@ -92,6 +70,7 @@ def fipsLocation(years:list, cities:tuple) -> dict:
 # pull American Community Survey variables for each year
 @asset(
     group_name='ACS',
+    io_manager_key='bigquery_io_manager',
 )
 def acsVars(years:list) -> dict:
     variables = {}
@@ -109,6 +88,7 @@ def acsVars(years:list) -> dict:
 # pull American Community Survey data for each year
 @asset(
     group_name='ACS',
+    io_manager_key='bigquery_io_manager',
 )
 def acsURLs(years:list, fipsLocation:dict, acsVars:dict) -> dict:
     urls = defaultdict(list)
@@ -125,6 +105,7 @@ def acsURLs(years:list, fipsLocation:dict, acsVars:dict) -> dict:
 # pull American Community Survey data for each year
 @asset(
     group_name='ACS',
+    io_manager_key='bigquery_io_manager',
 )
 def acsData(acsURLs:dict) -> dict:
     data = defaultdict(list)

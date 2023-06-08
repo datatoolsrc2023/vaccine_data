@@ -1,22 +1,14 @@
-FROM python:3.9 as dev
+FROM python:3.9.7   
 
-RUN mkdir -p /opt/dagster/dagster_home /opt/dagster/app
-COPY . /app
-ENV DAGSTER_HOME=/opt/dagster/dagster_home/
+COPY vaccines /app
+
 WORKDIR /app
 
-RUN pip install -r /app/requirements.txt
-EXPOSE 3000
-CMD ["dagster", "dev"]
+RUN pip install -r requirements.txt
 
 
-FROM python:3.9 as prod
+ENV GOOGLE_APPLICATION_CREDENTIALS=creds/sonic-ivy-388314-e05a0e8cbdfc.json
 
-RUN mkdir -p /opt/dagster/dagster_home /opt/dagster/app
-RUN git clone 'https://github.com/datatoolsrc2023/vaccine_data.git'
-ENV DAGSTER_HOME=/opt/dagster/dagster_home/
-WORKDIR /app
+EXPOSE 5000
 
-RUN pip install -r /app/requirements.txt
-EXPOSE 3000
-ENTRYPOINT ["dagit", "-h", "0.0.0.0", "-p", "3000"]
+ENTRYPOINT ["dagit", "-h", "0.0.0.0", "-p", "5000"]
