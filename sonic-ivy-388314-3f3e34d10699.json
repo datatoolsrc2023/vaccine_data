@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "sonic-ivy-388314",
+  "private_key_id": "3f3e34d106993f871dcb8445329fe8159d94377e",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC4iDWDHZz6aCOx\nscQ/hNDajTjYGkNAHyvOGYfJpAvSpM3pDv5d2Zw81B8GUcHruqjwvfPD5/+u76ir\nGixVfH6Chkw5/PEgrDFZQBXtaEfdj9o5MRZP7JvAWbdb0X0mm6NeCxtNnb3j0J52\ngj7km6B6Fz3q+TQv8rjkx2TFYRk2Rh2QLsHr6u3soIZcDu9h8HyrmoRkKwewenQV\n2kNpzReiqt3ej+oRk5ioX3H1uiuA5+am3YUsP3BLAF/AwrzyVw8/0+IIDxT887yh\nKXceM3AY4z1VlncStMiBqe8BvJAjzfVELuhnvo4lJpKmAnEqHjqPe12J8i1p+KG4\nz5YLZSvRAgMBAAECggEACeUWYv1qFOiThOhOiNYoLZbx4c8fNOuS+ZBHhmfFMUZw\naudImxtTiBS7BOeKh6eUvmN+JC6vGHgeBg4/SzZzsW+ue9PJEX6gPwwbXOWJCHu5\nqLRN0Stzotfgt9QC8yh4dS8Q58ueAn61146WfSNN8qwHQD+8hVdtZAmf2QBi1eTL\nHMMsSFJ3sYzL7/ZGzlDIVGqQ+e4yJ1ZcbgAxKHtKtVOQXcW+j+HYLEq+R3Ijd0kq\nKgunKTnbwoI2guUV55kqyNtiWSOLNuPLbibUL2e090P0ug5wQP3jwmysxhxtBHC4\nLLxHM0DJM9G2I/Z1YEdPxbKKOL1GpRVcDzSPtNZUIQKBgQD/fvzhgxgLRIj7l5ha\ngLbbG7a1FTFcHducQlcFEuMk/t0iqoXZbPsnXblRVs5UtAUHuiqCGxM5oFrkXpda\nPVmN9S2F4RpUrVmPhrgJBdeGqWfxqxmyi6pDyT4v4ex2DC/ep1OoC7Xh0RRC/z0P\nPLhy7L2ZI5YuC00wK/pBhZnTsQKBgQC45WNa46wNSz5wZDT2es3aBc0d0yKyCkMu\nbw+II8BOX6cy9oLwtnyCtd98MvxBIHp3NfX3c8CT5ychhvpOM175eYPUNTSj3moo\n9HPRj4Eo9xH+txweChstfD1rVn0Yr5/BZLntpwk33DmwLOmgd8kA7NPIOzcvoxK/\nzB61L2GCIQKBgG1RX0/6MGp5y4aiqVxn4FVFuVonlDQOzm1AcU1JdIjax7FSduy9\n1YRVdLpZwvS5BcH1pMSAYyxv8RPvaSECSPQVaIH0+7gpZ72ibdHmfv4uM7xSci9T\n1OkmDQadyvgDZOQGgiPPxuW0+M9luDFx0JXTt5fzgwl2anNnDa/FQzkxAoGBAKKt\nCE6Gc/E6W5RNRh/6ijUh14c/JY6Z4uPuyS6RrfgGxrfbFfetxzzFwfynazPt3HIY\nYvG1wSEgRliERqQZJJ3AoRFLQqZO4P5pnaEqboxZXVbLSozPfXv2jJ9s+CGJG7ju\n43tJ9J1WQNdVnLQX0BzlQawxFWvvQWbIs9fb+SGhAoGAKxk66L/CfW4XBeKQLJn9\n01q5/cCn5X28mpt5f8Zx5doa1VUDdbw2Zk5mx+z+Ps8WJJ/sm6a2MA1nHKVrmf0m\nhathp6TEqkPUCg649SZGWtg3QZUTQsuubva9Ft/RR7cUYIBOQs5kNhY9ZUnv6Hy3\nJDW8/CqX09rySI/g0nMHXTU=\n-----END PRIVATE KEY-----\n",
+  "client_email": "vaccines-data@sonic-ivy-388314.iam.gserviceaccount.com",
+  "client_id": "110428294695397032781",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/vaccines-data%40sonic-ivy-388314.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
