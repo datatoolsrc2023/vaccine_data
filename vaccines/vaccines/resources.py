@@ -36,15 +36,15 @@ class Utilities():
     def setCities(self, cities:list) -> list:
         self.cities = cities
 
-class FipsRecources():
+class FIPSRecources():
     utils = Utilities()
     
     def __init__(self):
-        pass
+        self.data_path = '/Users/blakevanfleteren/Programs/GitHub/vaccine_data/vaccines/data'
 
     # determine years to pull data for
     def files(self) -> list:
-        path = 'data/NIH_child/NIH_raw' # update from handcoded
+        path = f'{self.data_path}/NIH_child/NIH_raw' # update from handcoded
         files = os.listdir(path)
         files = [file for file in files if file.endswith('.DAT')]
         return files
@@ -66,20 +66,24 @@ class FipsRecources():
 
     # pull FIPS Codes in excel format for each year
     def fipsFiles(self, urls:dict) -> list:
+        cum_df = pd.DataFrame()
         for year, url in urls.items():
             place_url = url['place']
-            path = 'data/Census/Census_raw' # update from handcoded
             response = requests.get(place_url)
-            excel_path = f'{path}/{year}_FIPS_place.xlsx'
-            directory = os.path.dirname(excel_path)
-            os.makedirs(directory, exist_ok=True)
-            with open(excel_path, 'wb') as file:
-                file.write(response.content)
-            pd.read_excel(
-                excel_path, 
-                skiprows=4,
-                engine='openpyxl',
-                ).to_csv(f'{path}/{year}_FIPS_place.csv', index=False)
-        files = os.listdir(path)
-        # update to more specific search criteria
-        return [f'{path}/{file}' for file in files if file.startswith('20')]  
+            if response.status_code == 200:
+                df = pd.read_excel(response.content, skiprows=4)
+                df['year'] = year
+                cum_df = pd.concat([cum_df, df])
+                breakpoint()
+        return cum_df
+    
+    # Full implementation of FIPS data pull
+    def codes(self) -> pd.DataFrame:
+        files = self.files()
+        years = self.years(files)
+        urls = self.urls(years)
+        df = self.fipsFiles(urls)
+        return df
+
+class ACSResources():
+    pass

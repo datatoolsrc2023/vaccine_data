@@ -4,59 +4,27 @@ import os
 import requests
 from dagster import asset, Output, get_dagster_logger
 from collections import defaultdict
-from resources import cities, files, years
 
 logger = get_dagster_logger()
 
-
-# pull FIPS data from census for each year
 @asset(
     group_name='FIPS',
     io_manager_key='bigquery_io_manager',
+    required_resource_keys={'fips'},
 )
-def urls(years:list) -> Output[dict]:
-    urls = defaultdict(dict)
-    for year in years:
-        state = f'https://www2.census.gov/programs-surveys/popest/geographies/{year}/state-geocodes-v{year}.xlsx'
-        place = f'https://www2.census.gov/programs-surveys/popest/geographies/{year}/all-geocodes-v{year}.xlsx'
-        urls.update({year: {'state': state, 'place': place}})
-    return Output(
-        value=urls,
-        metadata={
-            year: urls[year] for year in years
-        }
-    )
-
-# pull FIPS Codes in excel format for each year
-@asset(
-    group_name='FIPS',
-    io_manager_key='bigquery_io_manager',
-)
-def fipsFiles(urls:dict) -> list:
-    for year, url in urls.items():
-        place_url = url['place']
-        path = 'data/Census/Census_raw' # update from handcoded
-        response = requests.get(place_url)
-        excel_path = f'{path}/{year}_FIPS_place.xlsx'
-        directory = os.path.dirname(excel_path)
-        os.makedirs(directory, exist_ok=True)
-        with open(excel_path, 'wb') as file:
-            file.write(response.content)
-        pd.read_excel(
-            excel_path, 
-            skiprows=4,
-            engine='openpyxl',
-            ).to_csv(f'{path}/{year}_FIPS_place.csv', index=False)
-    files = os.listdir(path)
-    # update to more specific search criteria
-    return [f'{path}/{file}' for file in files if file.startswith('20')]  
+def fipsCodes(context):
+    fips = context.resources.fips.codes()
+    return fips
 
 # identify FIPS for Chicago, IL and New York, NY
 @asset(
     group_name='FIPS',
     io_manager_key='bigquery_io_manager',
+    required_resource_keys={'fips'},
 )
-def fipsLocation(years:list, cities:tuple) -> dict:
+def fipsLocation(context, df:pd.DataFrame) -> dict:
+    years = context.resources.fips.years()
+    cities = context.resources.fips.utils.cities()
     fips = defaultdict(list)
     for year in years:
         file = f'data/Census/Census_raw/{year}_FIPS_place.csv' # update from handcoded

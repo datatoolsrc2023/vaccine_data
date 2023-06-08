@@ -6,6 +6,7 @@ from .assets import (cities, files, years,
                      urls, fipsFiles, acsVars,
                      acsData, acsURLs, fipsLocation)
 import os
+from .resources import FIPSRecources
 
 # Note that storing passwords in configuration is bad practice. It will be resolved later in the guide.
 resources = {
@@ -16,6 +17,7 @@ resources = {
             timeout=15.0
         ),
         "data_storage": "vaccinedata_blake_dev",
+        'fips': FIPSRecources
     },    
     "nikki_dev": {
         "bigquery_io_manager": BigQueryPandasIOManager(
