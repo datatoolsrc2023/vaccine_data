@@ -23,25 +23,21 @@ def fipsCodes(context):
     required_resource_keys={'fips'},
 )
 def fipsLocation(context, df:pd.DataFrame) -> dict:
-    years = context.resources.fips.years()
     cities = context.resources.fips.utils.cities()
-    fips = defaultdict(list)
-    for year in years:
-        file = f'data/Census/Census_raw/{year}_FIPS_place.csv' # update from handcoded
-        for city in cities:
-            fips[year].append(str(pl.read_csv(file)
-                        .select(name=pl.col('^Area Name.*$')
-                        .where(pl.col('^Area Name.*$') == city)
-                        .limit(1)).to_series()[0]))
-    return fips
+    df = (pl.from_pandas(df)
+          .filter(df['city'].isin(cities))
+          .select(name = pl.col('^Area_Name.*'))
+          .to_pandas())
+    return df
 
 # pull American Community Survey variables for each year
 @asset(
     group_name='ACS',
     io_manager_key='bigquery_io_manager',
 )
-def acsVars(years:list) -> dict:
+def acsVars(context) -> dict:
     variables = {}
+    years = context.resources.fips.utils.years()
     for year in years:
         url = f'https://api.census.gov/data/{year}/acs/acs1/subject/variables.json'
         print(url)
@@ -58,7 +54,7 @@ def acsVars(years:list) -> dict:
     group_name='ACS',
     io_manager_key='bigquery_io_manager',
 )
-def acsURLs(years:list, fipsLocation:dict, acsVars:dict) -> dict:
+def acsURLs(fipsLocation:dict, acsVars:dict) -> dict:
     urls = defaultdict(list)
     for year in acsVars.keys():
         cities = fipsLocation[year]
