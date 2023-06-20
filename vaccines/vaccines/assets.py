@@ -14,6 +14,11 @@ logger = get_dagster_logger()
 )
 def fipsCodes(context):
     fips = context.resources.fips.codes()
+    fips = pl.from_pandas(fips)
+    fips.columns = [col.replace(' ', '_')
+                    .replace('(', '')
+                    .replace(')', '') for col in fips.columns]
+    fips = fips.to_pandas()
     return fips
 
 # identify FIPS for Chicago, IL and New York, NY
@@ -22,11 +27,12 @@ def fipsCodes(context):
     io_manager_key='bigquery_io_manager',
     required_resource_keys={'fips'},
 )
-def fipsLocation(context, df:pd.DataFrame) -> dict:
+def fipsLocation(context, fipsCodes:pd.DataFrame) -> dict:
     cities = context.resources.fips.utils.cities()
-    df = (pl.from_pandas(df)
-          .filter(df['city'].isin(cities))
-          .select(name = pl.col('^Area_Name.*'))
+    df = pl.from_pandas(fipsCodes)
+    df = (df.select(pl.col('year', name='^Area_Name.*', code='Place Code (FIPS)')
+          .filter(pl.col('^Area_Name.*').isin(cities))
+          )
           .to_pandas())
     return df
 

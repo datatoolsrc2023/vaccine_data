@@ -1,13 +1,14 @@
 FROM python:3.9.7   
 
 COPY vaccines /app
+COPY sonic-ivy-388314-e05a0e8cbdfc.json /app
 
 WORKDIR /app
 
 RUN pip install -r requirements-m1.txt
 
 
-ENV GOOGLE_APPLICATION_CREDENTIALS=sonic-ivy-388314-3f3e34d10699.json
+ENV GOOGLE_APPLICATION_CREDENTIALS=sonic-ivy-388314-e05a0e8cbdfc.json
 
 EXPOSE 5000
 

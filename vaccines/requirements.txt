@@ -2,6 +2,8 @@ dagster==1.3.6
 dagit==1.3.6
 dagster-docker
 dagster-gcp==0.19.6
+pandas==2.0.2
+openpyxl==3.0.7
 polars==0.17.5
 petl==1.7.12
 pyarrow==11.0.0

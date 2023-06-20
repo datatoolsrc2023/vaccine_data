@@ -2,9 +2,7 @@
 from dagster_gcp_pandas import BigQueryPandasIOManager
 
 from dagster import Definitions
-from .assets import (cities, files, years,
-                     urls, fipsFiles, acsVars,
-                     acsData, acsURLs, fipsLocation)
+from .assets import (fipsCodes, fipsLocation, acsVars, acsData, acsURLs,)
 import os
 from .resources import FIPSRecources
 
@@ -17,7 +15,7 @@ resources = {
             timeout=15.0
         ),
         "data_storage": "vaccinedata_blake_dev",
-        'fips': FIPSRecources
+        'fips': FIPSRecources(),
     },    
     "nikki_dev": {
         "bigquery_io_manager": BigQueryPandasIOManager(
@@ -35,11 +33,20 @@ resources = {
         ),
         "data_storage": "vaccinedata",
     },
+    "blake_local": {
+        "bigquery_io_manager": BigQueryPandasIOManager(
+            project="sonic-ivy-388314",
+            dataset="vaccinedata_blake_dev",
+            timeout=15.0
+        ),
+        "data_storage": "vaccinedata_blake_dev",
+        'fips': FIPSRecources(),
+    }
 }
 
-deployment_name = os.getenv("DAGSTER_DEPLOYMENT", "blake_dev")
+deployment_name = os.getenv("DAGSTER_DEPLOYMENT", "blake_local")
 
 defs = Definitions(
-    assets=[cities, files, years, urls, fipsFiles, fipsLocation,
-                    acsVars, acsData, acsURLs], resources=resources[deployment_name]
+    assets=[fipsCodes, fipsLocation, acsVars, acsData, acsURLs],
+    resources=resources[deployment_name]
 )

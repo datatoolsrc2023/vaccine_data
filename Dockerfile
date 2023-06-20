@@ -8,6 +8,8 @@ RUN pip install -r requirements.txt
 
 
 ENV GOOGLE_APPLICATION_CREDENTIALS=creds/sonic-ivy-388314-e05a0e8cbdfc.json
+# updae this to appropriate deployment variable
+ENV DAGSTER_DEPLOYMENT=blake_dev 
 
 EXPOSE 5000
 

@@ -40,7 +40,13 @@ class FIPSRecources():
     utils = Utilities()
     
     def __init__(self):
-        self.data_path = '/Users/blakevanfleteren/Programs/GitHub/vaccine_data/vaccines/data'
+        if os.getenv('DAGSTER_DEPLOYMENT') == 'blake_local':
+            self.data_path = '/Users/blakevanfleteren/Programs/GitHub/vaccine_data/vaccines/data'
+        elif os.getenv('DAGSTER_DEPLOYMENT') == 'nikki_local':
+            # update with nikki's path
+            self.data_path = '/Users/blakevanfleteren/Programs/GitHub/vaccine_data/vaccines/data'    
+        else:
+            self.data_path = '/app/data'
 
     # determine years to pull data for
     def files(self) -> list:
@@ -71,10 +77,9 @@ class FIPSRecources():
             place_url = url['place']
             response = requests.get(place_url)
             if response.status_code == 200:
-                df = pd.read_excel(response.content, skiprows=4)
+                df = pd.read_excel(response.content, skiprows=4, engine='openpyxl')
                 df['year'] = year
                 cum_df = pd.concat([cum_df, df])
-                breakpoint()
         return cum_df
     
     # Full implementation of FIPS data pull
